@@ -1,22 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Singleton
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
+        {
+            Parallel.Invoke(
+                () => FirstPrint(),
+                () => SecondPrint()
+                );
+
+            Console.ReadLine();
+        }
+
+        private static void SecondPrint()
+        {
+            Singleton Second = Singleton.GetInstance;
+            Second.PrintDetails("Second Print");
+        }
+
+        private static void FirstPrint()
         {
             Singleton First = Singleton.GetInstance;
             First.PrintDetails("First Print");
-
-            Singleton Second = Singleton.GetInstance;
-            Second.PrintDetails("Second Print");
-
-            Console.ReadLine();
         }
     }
 }
