@@ -17,7 +17,7 @@ namespace Singleton
         }
 
 
-        private static readonly Singleton instance = new Singleton();
+        private static readonly Lazy<Singleton> instance = new Lazy<Singleton>(()=> new Singleton());
 
        // private static readonly object obj = new object();
 
@@ -33,7 +33,7 @@ namespace Singleton
                 //            instance = new Singleton();
                 //    }
                 //}
-                return instance;
+                return instance.Value;
             }
         }
 
